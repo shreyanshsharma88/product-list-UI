@@ -33,6 +33,7 @@ export const useProductFilters = (currentPage: number) => {
 
   const updateFilter = useCallback(
     (key: keyof FilterOptions, value: string | SortDirection) => {
+      
       setFilters((prev) => ({ ...prev, [key]: value }));
     },
     []

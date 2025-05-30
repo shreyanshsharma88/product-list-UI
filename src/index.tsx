@@ -5,6 +5,7 @@ import { ProductDetail, ProductFilters, ProductGrid } from "./Components";
 import { ErrorMessage } from "./Components/Error";
 import { useCategories, useProductFilters } from "./Hooks";
 import type { Product } from "./types";
+import { glassmorphism } from "./theme";
 
 export default function Render() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -66,7 +67,18 @@ export default function Render() {
   }
 
   return (
-    <>
+    <Box
+      sx={{
+        borderRadius: "20px",
+        padding: "2rem",
+
+        maxWidth: 1280,
+        mx: "auto",
+        my: 4,
+
+        ...glassmorphism,
+      }}
+    >
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -88,7 +100,9 @@ export default function Render() {
           sortBy={filters.sortBy}
           sortDirection={filters.sortDirection}
           searchTerm={filters.searchTerm}
-          onCategoryChange={(category) => updateFilter("category", category)}
+          onCategoryChange={(category) => {
+            setCurrentPage(0); 
+            updateFilter("category", category)}}
           onSortChange={(sortBy, direction) => {
             updateFilter("sortBy", sortBy);
             updateFilter("sortDirection", direction);
@@ -161,6 +175,6 @@ export default function Render() {
           onClose={handleCloseDetail}
         />
       </motion.div>
-    </>
+    </Box>
   );
 }

@@ -99,10 +99,14 @@ export const theme = createTheme({
         styleOverrides: {
           root: {
             borderRadius: 12,
-            boxShadow: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
-            transition: 'all 0.2s ease-in-out',
+            background: 'rgba(255, 255, 255, 0.1)',
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)', // For Safari
+            boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.1)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            transition: 'all 0.3s ease-in-out',
             '&:hover': {
-              boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+              boxShadow: '0 12px 24px -4px rgba(31, 38, 135, 0.15)',
             },
           },
         },
@@ -114,5 +118,45 @@ export const theme = createTheme({
           },
         },
       },
+      MuiPaper: {
+        styleOverrides: {
+          root: {
+            background: 'rgba(255, 255, 255, 0.1)',
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+          },
+        },
+      },
+      MuiDialog: {
+        styleOverrides: {
+          paper: {
+            background: 'rgba(255, 255, 255, 0.1)',
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+          },
+        },
+      },
     },
   });
+  export const glassmorphism = {
+    background: 'rgba(255, 255, 255, 0.15)',
+    backdropFilter: 'blur(10px)',
+    WebkitBackdropFilter: 'blur(10px)',
+    border: '1px solid rgba(255, 255, 255, 0.2)',
+    boxShadow: '0 4px 30px rgba(0, 0, 0, 0.05)',
+  };
+  // styles/glassNeo.ts
+export const glassNeoMinimal = {
+  background: 'rgba(255, 255, 255, 0.1)', // transparent for glass effect
+  backdropFilter: 'blur(8px)',
+  WebkitBackdropFilter: 'blur(8px)',
+  borderRadius: '20px',
+  padding: '2rem',
+  boxShadow: `
+    10px 10px 30px rgba(0,0,0,0.1), 
+    -10px -10px 30px rgba(255,255,255,0.5)
+  `,
+  border: '1px solid rgba(255, 255, 255, 0.2)',
+};
