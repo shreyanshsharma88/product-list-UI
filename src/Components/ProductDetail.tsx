@@ -207,7 +207,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                     ))}
                   </Box>
 
-                  <Paper sx={{ p: 2, mb: 3, bgcolor: "grey.50" }}>
+                  <Paper sx={{ p: 2, mb: 3, bgcolor: "transparent" }}>
                     <Grid container spacing={2}>
                       <Grid
                         size={{
