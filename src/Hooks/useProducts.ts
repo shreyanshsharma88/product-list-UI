@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { productApi } from '../http';
 
-export const useProducts = (limit = 30, skip = 0) => {
+export const useProducts = (limit = 30, skip = 0, category = "") => {
   return useQuery({
-    queryKey: ['products', limit, skip],
-    queryFn: () => productApi.getProducts(limit, skip),
+    queryKey: ['products', limit, skip, category],
+    queryFn: () => productApi.getProducts(limit, skip, category),
     staleTime: 5 * 60 * 1000,
   
   });

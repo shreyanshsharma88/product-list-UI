@@ -1,3 +1,4 @@
+
 import {
   Close,
   Inventory,
@@ -50,10 +51,13 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
           fullWidth
           PaperProps={{
             component: motion.div,
-            initial: { opacity: 0, scale: 0.9 },
-            animate: { opacity: 1, scale: 1 },
-            exit: { opacity: 0, scale: 0.9 },
-            transition: { duration: 0.3 },
+            initial: { rotateY: 90, opacity: 0 },
+            animate: { rotateY: 0, opacity: 1 },
+            exit: { rotateY: 90, opacity: 0 },
+            transition: { duration: 0.2 },
+            style: {
+              transformStyle: "preserve-3d",
+            },
           }}
         >
           <DialogTitle
@@ -74,7 +78,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
           <DialogContent>
             <Grid container spacing={3}>
               <Grid
-                columns={{
+                size={{
                   xs: 12,
                   sm: 6,
                   md: 6,
@@ -126,7 +130,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
               </Grid>
 
               <Grid
-                columns={{
+                size={{
                   xs: 12,
                   sm: 6,
                   md: 6,
@@ -206,7 +210,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                   <Paper sx={{ p: 2, mb: 3, bgcolor: "grey.50" }}>
                     <Grid container spacing={2}>
                       <Grid
-                        columns={{
+                        size={{
                           xs: 6,
                         }}
                       >
@@ -217,7 +221,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                           </Typography>
                         </Box>
                       </Grid>
-                      <Grid columns={{ xs: 6 }}>
+                      <Grid size={{ xs: 6 }}>
                         <Box sx={{ display: "flex", alignItems: "center" }}>
                           <LocalShipping sx={{ mr: 1, color: "info.main" }} />
                           <Typography variant="body2">
@@ -225,7 +229,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                           </Typography>
                         </Box>
                       </Grid>
-                      <Grid columns={{ xs: 6 }}>
+                      <Grid size={{ xs: 6 }}>
                         <Box sx={{ display: "flex", alignItems: "center" }}>
                           <Security sx={{ mr: 1, color: "warning.main" }} />
                           <Typography variant="body2">
@@ -233,7 +237,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                           </Typography>
                         </Box>
                       </Grid>
-                      <Grid columns={{ xs: 6 }}>
+                      <Grid size={{ xs: 6 }}>
                         <Typography variant="body2" color="text.secondary">
                           Min. Order: {product.minimumOrderQuantity}
                         </Typography>
@@ -254,7 +258,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
               </Grid>
 
               {product.reviews.length > 0 && (
-                <Grid columns={{ xs: 12 }}>
+                <Grid size={{ xs: 12 }}>
                   <Divider sx={{ my: 2 }} />
                   <Typography variant="h6" gutterBottom>
                     Customer Reviews

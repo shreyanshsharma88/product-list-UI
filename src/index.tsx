@@ -1,29 +1,38 @@
-import React, { useState, useCallback } from "react";
-import { Box, Typography, Pagination, Paper } from "@mui/material";
+import { Box, Pagination, Paper, Typography } from "@mui/material";
 import { motion } from "framer-motion";
-import type { Product } from "./types";
-import { useCategories, useProductFilters, useProducts } from "./Hooks";
+import React, { useCallback, useState } from "react";
 import { ProductDetail, ProductFilters, ProductGrid } from "./Components";
 import { ErrorMessage } from "./Components/Error";
-
-const PRODUCTS_PER_PAGE = 30;
+import { useCategories, useProductFilters } from "./Hooks";
+import type { Product } from "./types";
 
 export default function Render() {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [detailOpen, setDetailOpen] = useState(false);
 
-  const skip = (currentPage - 1) * PRODUCTS_PER_PAGE;
+  // const skip = (currentPage - 1) * PRODUCTS_PER_PAGE;
+  // const {
+  //   data: productsData,
+  //   isLoading,
+  //   error,
+  //   refetch,
+  // } = useProducts(PRODUCTS_PER_PAGE, skip);
+  // const { data: categories = [] } = useCategories();
+
   const {
-    data: productsData,
+    filters,
+    updateFilter,
+    resetFilters,
+    filteredAndSortedProducts,
     isLoading,
     error,
     refetch,
-  } = useProducts(PRODUCTS_PER_PAGE, skip);
-  const { data: categories = [] } = useCategories();
+    totalPages,
+    productsData,
+  } = useProductFilters(currentPage);
 
-  const { filters, updateFilter, resetFilters, filteredAndSortedProducts } =
-    useProductFilters(productsData?.products || []);
+  const { data: categories } = useCategories();
 
   const handleViewDetails = useCallback((product: Product) => {
     setSelectedProduct(product);
@@ -43,9 +52,9 @@ export default function Render() {
     []
   );
 
-  const totalPages = productsData
-    ? Math.ceil(productsData.total / PRODUCTS_PER_PAGE)
-    : 0;
+  // const totalPages = productsData
+  //   ? Math.ceil(productsData.total / PRODUCTS_PER_PAGE)
+  //   : 0;
 
   if (error) {
     return (
@@ -74,7 +83,7 @@ export default function Render() {
         </Box>
 
         <ProductFilters
-          categories={categories.map((cat) => cat.name)}
+          categories={(categories ?? []).map((cat) => cat.slug)}
           selectedCategory={filters.category}
           sortBy={filters.sortBy}
           sortDirection={filters.sortDirection}

@@ -12,6 +12,7 @@ import {
 import { ShoppingCart, Visibility } from '@mui/icons-material';
 import { motion } from 'framer-motion';
 import type { Product } from '../types';
+import { toast } from 'react-toastify';
 
 interface ProductCardProps {
   product: Product;
@@ -145,7 +146,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onViewDetails
                 variant="contained"
                 size="small"
                 startIcon={<ShoppingCart />}
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e) => {e.stopPropagation()
+                  toast.success('Not integrated yet!')
+                }}
                 sx={{ flex: 1 }}
               >
                 Add

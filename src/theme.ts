@@ -1,7 +1,6 @@
 import { createTheme } from "@mui/material";
 
-export const theme = createTheme
-({
+export const theme = createTheme({
     palette: {
       mode: 'light',
       primary: {
@@ -45,7 +44,7 @@ export const theme = createTheme
       },
     },
     typography: {
-      fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+      fontFamily: 'Poppins',
       h1: {
         fontSize: '2.5rem',
         fontWeight: 700,

@@ -2,8 +2,9 @@ import type { Product, ProductsResponse } from "../types";
 import { api } from "./api";
 
 export const productApi = {
-  getProducts: async (limit = 30, skip = 0): Promise<ProductsResponse> => {
-    const response = await api.get(`/products?limit=${limit}&skip=${skip}`);
+  getProducts: async (limit = 30, skip = 0, category = ""): Promise<ProductsResponse> => {
+    const route = category ? `/products/category/${category}` : `/products`;
+    const response = await api.get(`${route}?limit=${limit}&skip=${skip}`);
     return response.data;
   },
 

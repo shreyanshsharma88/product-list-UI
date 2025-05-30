@@ -20,7 +20,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
       <Grid container spacing={3}>
         {Array.from({ length: 12 }).map((_, index) => (
           <Grid
-            columns={{
+            size={{
               xs: 12,
               sm: 6,
               md: 12,
@@ -39,7 +39,7 @@ export const ProductGrid: React.FC<ProductGridProps> = ({
     <Grid container spacing={3}>
       {products.map((product, index) => (
         <Grid
-          columns={{
+          size={{
             xs: 12,
             sm: 6,
             md: 4,
